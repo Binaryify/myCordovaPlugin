@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.matd.coolplugin"
+    version="0.2.11">
+    <name>CoolPlugin</name>
+    <description>The coolest Plugin ever implemented</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,coolest</keywords>
+    <repo></repo>
+    <issue></issue>
+
+    <js-module src="www/CoolPlugin.js" name="CoolPlugin">
+        <!-- js插件全局目标对象, 后面js调用CoolPlugin.showToast() -->
+        <clobbers target="CoolPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CoolPlugin" >
+                <!-- value 类名的路径包含命名空间 和下面的target-dir路径一样 -->
+                <param name="android-package" value="com.matd.coolplugin.CoolPlugin"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.BLUETOOTH"/>
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+        </config-file>
+        <source-file src="src/android/CoolPlugin.java" target-dir="src/com/matd/coolplugin" />
+        <source-file src="src/android/BluetoothManager.java" target-dir="src/com/matd/coolplugin" />
+        <source-file src="src/android/ICallback.java" target-dir="src/woyou/aidlservice/jiuiv5" />
+        <source-file src="src/android/IWoyouService.java" target-dir="src/woyou/aidlservice/jiuiv5" />
+        <source-file src="src/android/TransBean.java" 
+        target-dir="src/com/sunmi/trans" />
+    </platform>
+
+</plugin>
